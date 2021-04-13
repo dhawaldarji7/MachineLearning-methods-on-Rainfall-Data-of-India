@@ -144,9 +144,9 @@ def getkey(num):
             return sd
 
 
-# # Regression Methods
-#
-# # Data Splitting
+# Regression Methods
+
+# Data Splitting
 Xrdf = np.array(rain_past[['P1', 'P2', 'P3', 'JJAS1', 'JJAS2', 'JJAS3']])
 yrdf = np.array(rain_past['ANNUAL'])
 
@@ -235,8 +235,8 @@ pp.show()
 
 # RandomForests Regressor
 
-# rfreg = RandomForestRegressor(n_estimators=1232, min_samples_split=10, min_samples_leaf=5, max_features='sqrt',
-#                               max_depth=29)
+rfreg = RandomForestRegressor(n_estimators=1232, min_samples_split=10, min_samples_leaf=5, max_features='sqrt',
+                              max_depth=29)
 rfreg = RandomForestRegressor(n_estimators=5000)
 rfreg.fit(Xtrainv, ytrainv)
 
@@ -351,8 +351,8 @@ print(rfreg.score(Xtest, ytest), elastic.score(Xtest, ytest), stack.score(Xtest,
 X = np.array(raindf[['JAN-FEB', 'MAR-MAY', 'JUN-SEP', 'OCT-DEC']])
 y = np.array(raindf['REGION'])
 
-# y = preprocessing.label_binarize(y, classes=['SCANTY','LOW','MODERATE','HEAVY'])
-# n_classes = y.shape[1]
+y = preprocessing.label_binarize(y, classes=['SCANTY','LOW','MODERATE','HEAVY'])
+n_classes = y.shape[1]
 
 Xreduced = PCA(n_components=2).fit_transform(X)
 results = pd.DataFrame(Xreduced,columns=['pca1', 'pca2'])
@@ -366,7 +366,7 @@ yt = np.array(division_wise_overall_avg['REGION'])
 Xtreduced = PCA(n_components=2).fit_transform(Xt)
 resultst = pd.DataFrame(Xtreduced, columns=['pca1', 'pca2'])
 
-# # CLASSIFICATION
+# CLASSIFICATION
 
 # SUPPORT VECTOR MACHINE
 svm_linear = svm.SVC(kernel='linear')
@@ -458,80 +458,3 @@ legend.get_texts()[3].set_text('HEAVY')
 pp.xlabel("PC1", size=14)
 pp.ylabel("PC2", size=14)
 pp.show()
-
-
-UNUSED CODE
-
-classplot = pp.figure(figsize=(8, 8))
-plot_decision_regions(Xtest, ytest, svm_rad)
-pp.title('Classification into Regions using SVM(Radial kernel)', size=18)
-legend = pp.legend()
-legend.get_texts()[0].set_text('SCANTY')
-legend.get_texts()[1].set_text('LOW')
-legend.get_texts()[2].set_text('MODERATE')
-legend.get_texts()[3].set_text('HEAVY')
-pp.xlabel("PC1", size=14)
-pp.ylabel("PC2", size=14)
-pp.show()
-
-sb.scatterplot(x="pca1", y="pca2", hue=labels, data=results)
-pp.show()
-
-def make_meshgrid(x, y, h=.6):
-    x_min, x_max = x.min() - 1, x.max() + 1
-    y_min, y_max = y.min() - 1, y.max() + 1
-    xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h))
-    return xx, yy
-
-def plot_contours(ax, clf, xx, yy, **params):
-    Z = clf.predict(np.c_[xx.ravel(), yy.ravel()])
-    Z = Z.reshape(xx.shape)
-    out = ax.contourf(xx, yy, Z, **params)
-    return out
-
-svm_linear.fit(Xtreduced,yt)
-
-pp.figure(figsize=(10,8))
-fig, ax = pp.subplots()
-# title for the plots
-title = ('Decision surface of linear SVC ')
-# Set-up grid for plotting.
-X0, X1 = Xtreduced[:, 0], Xtreduced[:, 1]
-xx, yy = make_meshgrid(X0, X1)
-
-plot_contours(ax, svm_linear, xx, yy, cmap=pp.cm.get_cmap('Spectral'), alpha=0.8)
-ax.scatter(X0, X1, c=yt, cmap=pp.cm.get_cmap('Spectral'), s=20, edgecolors='k')
-pp.text(X0, X1, c="HI", s='top')
-ax.set_ylabel('PC2')
-ax.set_xlabel('PC1')
-ax.set_xticks(())
-ax.set_yticks(())
-ax.set_title('SVM plot using PCA')
-ax.legend()
-pp.show()
-
-n_estimators = [int(x) for x in np.linspace(start=100 , stop=1000, num=10)]
-max_features = ['auto', 'sqrt']
-max_depth = [int(x) for x in np.linspace(10, 200, num=11)]
-max_depth.append(None)
-min_samples_split = [2, 5, 10]
-min_samples_leaf = [1, 2, 4]
-learning_rate = [0.1, 0.2 , 0.3]
-
-random_grid = {'n_estimators': n_estimators,
-               'max_features': max_features,
-               'max_depth': max_depth,
-               'min_samples_split': min_samples_split,
-               'min_samples_leaf': min_samples_leaf,
-               'learning_rate': learning_rate}
-
-rfreg = GradientBoostingRegressor()
-rf_random = model_selection.RandomizedSearchCV(estimator=rfreg, param_distributions=random_grid, n_iter=10, cv=3,
-                                               verbose=2, random_state=40, n_jobs=2)
-
-rf_random.fit(Xtrain, ytrain)
-print(rf_random.best_params_)
-
-rfreg = RandomForestRegressor(n_estimators=400, min_samples_split=2, min_samples_leaf=2,max_features='sqrt',
-                              max_depth=None, bootstrap=True)
-
