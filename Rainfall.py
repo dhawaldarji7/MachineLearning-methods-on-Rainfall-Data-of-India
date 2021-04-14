@@ -434,7 +434,8 @@ for label in yt:
 yt = np.array(ytest_new)
 
 classplot = pp.figure(figsize=(8, 8))
-plot_decision_regions(Xtreduced, yt, km)
+# Change the third parameter to plot for other classifiers (svm_linear, svm_rad, knn, dt, xgc, mlpc)
+plot_decision_regions(Xtest, ytest, svm_linear)
 pp.title('Classification into Regions using K-Means', size=18)
 legend = pp.legend()
 legend.get_texts()[0].set_text('SCANTY')
