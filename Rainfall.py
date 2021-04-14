@@ -162,196 +162,196 @@ Xtrainv, Xtestv, ytrainv, ytestv = model_selection.train_test_split(Xtrain, ytra
 # "RMSE using method_name: trainRMSE validationRMSE testRMSE"
 
 # Linear Regression
-# linear = LinearRegression()
-# linear.fit(Xtrainv, ytrainv)
+linear = LinearRegression()
+linear.fit(Xtrainv, ytrainv)
 
-# linear_train_pred = linear.predict(Xtrainv)
-# linear_val_pred = linear.predict(Xtestv)
-# linear_test_pred = linear.predict(Xtest)
+linear_train_pred = linear.predict(Xtrainv)
+linear_val_pred = linear.predict(Xtestv)
+linear_test_pred = linear.predict(Xtest)
 
-# linear_train_mse = mean_squared_error(ytrainv, linear_train_pred)
-# linear_val_mse = mean_squared_error(ytestv, linear_val_pred)
-# linear_test_mse = mean_squared_error(ytest, linear_test_pred)
+linear_train_mse = mean_squared_error(ytrainv, linear_train_pred)
+linear_val_mse = mean_squared_error(ytestv, linear_val_pred)
+linear_test_mse = mean_squared_error(ytest, linear_test_pred)
 
-# print("RMSE using LinearRegression:\t{}\t{}\t{}".format(np.sqrt(linear_train_mse), np.sqrt(linear_val_mse),
-#                                                     np.sqrt(linear_test_mse)))
+print("RMSE using LinearRegression:\t{}\t{}\t{}".format(np.sqrt(linear_train_mse), np.sqrt(linear_val_mse),
+                                                    np.sqrt(linear_test_mse)))
 
-# # Ridge Regression
+# Ridge Regression
 
-# ridge = RidgeCV(alphas=[0.0001, 0.001, 0.01, 0.1, 1, 10, 100],
-#                 cv=15)
-# ridge.fit(Xtrainv, ytrainv)
+ridge = RidgeCV(alphas=[0.0001, 0.001, 0.01, 0.1, 1, 10, 100],
+                cv=15)
+ridge.fit(Xtrainv, ytrainv)
 
-# ridge_train_pred = ridge.predict(Xtrainv)
-# ridge_val_pred = ridge.predict(Xtestv)
-# ridge_test_pred = ridge.predict(Xtest)
+ridge_train_pred = ridge.predict(Xtrainv)
+ridge_val_pred = ridge.predict(Xtestv)
+ridge_test_pred = ridge.predict(Xtest)
 
-# ridge_train_mse = mean_squared_error(ytrainv, ridge_train_pred)
-# ridge_val_mse = mean_squared_error(ytestv, ridge_val_pred)
-# ridge_test_mse = mean_squared_error(ytest, ridge_test_pred)
+ridge_train_mse = mean_squared_error(ytrainv, ridge_train_pred)
+ridge_val_mse = mean_squared_error(ytestv, ridge_val_pred)
+ridge_test_mse = mean_squared_error(ytest, ridge_test_pred)
 
-# print("RMSE using RidgeRegression:\t{}\t{}\t{}".format(np.sqrt(ridge_train_mse), np.sqrt(ridge_val_mse),
-#                                                     np.sqrt(ridge_test_mse)))
+print("RMSE using RidgeRegression:\t{}\t{}\t{}".format(np.sqrt(ridge_train_mse), np.sqrt(ridge_val_mse),
+                                                    np.sqrt(ridge_test_mse)))
 
-# # Lasso Regression
+# Lasso Regression
 
-# lasso = LassoCV(alphas=[0.01, 0.1, 1, 10, 100],
-#                 max_iter=100,
-#                 cv=10,
-#                 tol=0.1)
-# lasso.fit(Xtrainv, ytrainv)
+lasso = LassoCV(alphas=[0.01, 0.1, 1, 10, 100],
+                max_iter=100,
+                cv=10,
+                tol=0.1)
+lasso.fit(Xtrainv, ytrainv)
 
-# lasso_train_pred = lasso.predict(Xtrainv)
-# lasso_val_pred = lasso.predict(Xtestv)
-# lasso_test_pred = lasso.predict(Xtest)
+lasso_train_pred = lasso.predict(Xtrainv)
+lasso_val_pred = lasso.predict(Xtestv)
+lasso_test_pred = lasso.predict(Xtest)
 
-# lasso_train_mse = mean_squared_error(ytrainv, lasso_train_pred)
-# lasso_val_mse = mean_squared_error(ytestv, lasso_val_pred)
-# lasso_test_mse = mean_squared_error(ytest, lasso_test_pred)
+lasso_train_mse = mean_squared_error(ytrainv, lasso_train_pred)
+lasso_val_mse = mean_squared_error(ytestv, lasso_val_pred)
+lasso_test_mse = mean_squared_error(ytest, lasso_test_pred)
 
-# print("RMSE using LassoRegression:\t{}\t{}\t{}".format(np.sqrt(lasso_train_mse), np.sqrt(lasso_val_mse),
-#                                                     np.sqrt(lasso_test_mse)))
+print("RMSE using LassoRegression:\t{}\t{}\t{}".format(np.sqrt(lasso_train_mse), np.sqrt(lasso_val_mse),
+                                                    np.sqrt(lasso_test_mse)))
 
-# # ElasticNet Regression
+# ElasticNet Regression
 
-# elastic = ElasticNetCV(l1_ratio=0.008,
-#                        n_alphas=100,
-#                        max_iter=20,
-#                        cv=10,
-#                        tol=0.1)
-# elastic.fit(Xtrainv, ytrainv)
+elastic = ElasticNetCV(l1_ratio=0.008,
+                       n_alphas=100,
+                       max_iter=20,
+                       cv=10,
+                       tol=0.1)
+elastic.fit(Xtrainv, ytrainv)
 
-# elastic_train_pred = elastic.predict(Xtrainv)
-# elastic_val_pred = elastic.predict(Xtestv)
-# elastic_test_pred = elastic.predict(Xtest)
+elastic_train_pred = elastic.predict(Xtrainv)
+elastic_val_pred = elastic.predict(Xtestv)
+elastic_test_pred = elastic.predict(Xtest)
 
-# elastic_train_mse = mean_squared_error(ytrainv, elastic_train_pred)
-# elastic_val_mse = mean_squared_error(ytestv, elastic_val_pred)
-# elastic_test_mse = mean_squared_error(ytest, elastic_test_pred)
+elastic_train_mse = mean_squared_error(ytrainv, elastic_train_pred)
+elastic_val_mse = mean_squared_error(ytestv, elastic_val_pred)
+elastic_test_mse = mean_squared_error(ytest, elastic_test_pred)
 
-# print("RMSE using ElasticNetRegression:\t{}\t{}\t{}".format(np.sqrt(elastic_train_mse), np.sqrt(elastic_val_mse),
-#                                                     np.sqrt(elastic_test_mse)))
+print("RMSE using ElasticNetRegression:\t{}\t{}\t{}".format(np.sqrt(elastic_train_mse), np.sqrt(elastic_val_mse),
+                                                    np.sqrt(elastic_test_mse)))
 
-# df_rf = pd.DataFrame({'Actual': ytest, 'Predicted': elastic_test_pred})
-# fig1 = pp.figure(figsize=(8, 6))
-# df_rf.head(n=300).plot()
-# pp.legend()
-# pp.title("ElasticNet Actual v/s Predicted Annual Rainfall")
-# pp.xticks(())
-# pp.yticks(())
-# pp.show()
+df_rf = pd.DataFrame({'Actual': ytest, 'Predicted': elastic_test_pred})
+fig1 = pp.figure(figsize=(8, 6))
+df_rf.head(n=300).plot()
+pp.legend()
+pp.title("ElasticNet Actual v/s Predicted Annual Rainfall")
+pp.xticks(())
+pp.yticks(())
+pp.show()
 
-# # RandomForests Regressor
+# RandomForests Regressor
 
-# rfreg = RandomForestRegressor(n_estimators=1232, min_samples_split=10, min_samples_leaf=5, max_features='sqrt',
-#                               max_depth=29)
-# rfreg = RandomForestRegressor(n_estimators=5000)
-# rfreg.fit(Xtrainv, ytrainv)
+rfreg = RandomForestRegressor(n_estimators=1232, min_samples_split=10, min_samples_leaf=5, max_features='sqrt',
+                              max_depth=29)
+rfreg = RandomForestRegressor(n_estimators=5000)
+rfreg.fit(Xtrainv, ytrainv)
 
-# rf_train_pred = rfreg.predict(Xtrainv)
-# rf_val_pred = rfreg.predict(Xtestv)
-# rf_test_pred = rfreg.predict(Xtest)
+rf_train_pred = rfreg.predict(Xtrainv)
+rf_val_pred = rfreg.predict(Xtestv)
+rf_test_pred = rfreg.predict(Xtest)
 
-# rf_train_mse = mean_squared_error(ytrainv, rf_train_pred)
-# rf_val_mse = mean_squared_error(ytestv, rf_val_pred)
-# rf_test_mse = mean_squared_error(ytest, rf_test_pred)
+rf_train_mse = mean_squared_error(ytrainv, rf_train_pred)
+rf_val_mse = mean_squared_error(ytestv, rf_val_pred)
+rf_test_mse = mean_squared_error(ytest, rf_test_pred)
 
-# print("RMSE using RandomForestRegressor:\t{}\t{}\t{}".format(np.sqrt(rf_train_mse), np.sqrt(rf_val_mse),
-#                                                     np.sqrt(rf_test_mse)))
+print("RMSE using RandomForestRegressor:\t{}\t{}\t{}".format(np.sqrt(rf_train_mse), np.sqrt(rf_val_mse),
+                                                    np.sqrt(rf_test_mse)))
 
-# df_rf = pd.DataFrame({'Actual': ytest, 'Predicted': rf_test_pred})
-# fig1 = pp.figure(figsize=(8, 6))
-# df_rf.head(n=300).plot()
-# pp.legend()
-# pp.title("RandomForests Actual v/s Predicted Annual Rainfall")
-# pp.xticks(())
-# pp.yticks(())
-# pp.show()
+df_rf = pd.DataFrame({'Actual': ytest, 'Predicted': rf_test_pred})
+fig1 = pp.figure(figsize=(8, 6))
+df_rf.head(n=300).plot()
+pp.legend()
+pp.title("RandomForests Actual v/s Predicted Annual Rainfall")
+pp.xticks(())
+pp.yticks(())
+pp.show()
 
-# # Gradient Boosting Regressor
+# Gradient Boosting Regressor
 
-# gbreg = GradientBoostingRegressor()
-# gbreg.fit(Xtrainv, ytrainv)
+gbreg = GradientBoostingRegressor()
+gbreg.fit(Xtrainv, ytrainv)
 
-# gb_train_pred = gbreg.predict(Xtrainv)
-# gb_val_pred = gbreg.predict(Xtestv)
-# gb_test_pred = gbreg.predict(Xtest)
+gb_train_pred = gbreg.predict(Xtrainv)
+gb_val_pred = gbreg.predict(Xtestv)
+gb_test_pred = gbreg.predict(Xtest)
 
-# gb_train_mse = mean_squared_error(ytrainv, gb_train_pred)
-# gb_val_mse = mean_squared_error(ytestv, gb_val_pred)
-# gb_test_mse = mean_squared_error(ytest, gb_test_pred)
+gb_train_mse = mean_squared_error(ytrainv, gb_train_pred)
+gb_val_mse = mean_squared_error(ytestv, gb_val_pred)
+gb_test_mse = mean_squared_error(ytest, gb_test_pred)
 
-# print("RMSE using GradientBoostingRegressor:\t{}\t{}\t{}".format(np.sqrt(gb_train_mse), np.sqrt(gb_val_mse),
-#                                                     np.sqrt(gb_test_mse)))
+print("RMSE using GradientBoostingRegressor:\t{}\t{}\t{}".format(np.sqrt(gb_train_mse), np.sqrt(gb_val_mse),
+                                                    np.sqrt(gb_test_mse)))
 
-# # MultiLayerPerceptron Regressor
+# MultiLayerPerceptron Regressor
 
-# mlpr = MLPRegressor(hidden_layer_sizes=100,
-#                     alpha=100,
-#                     tol=0.01,
-#                     learning_rate_init=0.099,
-#                     early_stopping=True,
-#                     shuffle=True)
+mlpr = MLPRegressor(hidden_layer_sizes=100,
+                    alpha=100,
+                    tol=0.01,
+                    learning_rate_init=0.099,
+                    early_stopping=True,
+                    shuffle=True)
 
-# mlpr.fit(Xtrainv, ytrainv)
+mlpr.fit(Xtrainv, ytrainv)
 
-# mlpr_train_pred = mlpr.predict(Xtrainv)
-# mlpr_val_pred = mlpr.predict(Xtestv)
-# mlpr_test_pred = mlpr.predict(Xtest)
+mlpr_train_pred = mlpr.predict(Xtrainv)
+mlpr_val_pred = mlpr.predict(Xtestv)
+mlpr_test_pred = mlpr.predict(Xtest)
 
-# mlpr_train_mse = mean_squared_error(ytrainv, mlpr_train_pred)
-# mlpr_val_mse = mean_squared_error(ytestv, mlpr_val_pred)
-# mlpr_test_mse = mean_squared_error(ytest, mlpr_test_pred)
+mlpr_train_mse = mean_squared_error(ytrainv, mlpr_train_pred)
+mlpr_val_mse = mean_squared_error(ytestv, mlpr_val_pred)
+mlpr_test_mse = mean_squared_error(ytest, mlpr_test_pred)
 
-# print("RMSE using MLPRegressor:\t{}\t{}\t{}".format(np.sqrt(mlpr_train_mse), np.sqrt(mlpr_val_mse),
-#                                                     np.sqrt(mlpr_test_mse)))
+print("RMSE using MLPRegressor:\t{}\t{}\t{}".format(np.sqrt(mlpr_train_mse), np.sqrt(mlpr_val_mse),
+                                                    np.sqrt(mlpr_test_mse)))
 
-# estimators = [
-#     ('el', ElasticNetCV(l1_ratio=0.008,
-#                         n_alphas=100,
-#                         max_iter=20,
-#                         cv=10,
-#                         tol=0.1)),
-#     ('rf', RandomForestRegressor(n_estimators=1400,
-#                                  min_samples_split=2,
-#                                  min_samples_leaf=2,
-#                                  max_features='sqrt',
-#                                  max_depth=5,
-#                                  oob_score=True)),
-# ]
+estimators = [
+    ('el', ElasticNetCV(l1_ratio=0.008,
+                        n_alphas=100,
+                        max_iter=20,
+                        cv=10,
+                        tol=0.1)),
+    ('rf', RandomForestRegressor(n_estimators=1400,
+                                 min_samples_split=2,
+                                 min_samples_leaf=2,
+                                 max_features='sqrt',
+                                 max_depth=5,
+                                 oob_score=True)),
+]
 
-# stack = StackingRegressor(
-#     estimators=estimators,
-#     final_estimator=RandomForestRegressor(n_estimators=1400,
-#                                           min_samples_split=2,
-#                                           min_samples_leaf=2,
-#                                           max_features='sqrt',
-#                                           max_depth=5,
-#                                           oob_score=True)
-# )
+stack = StackingRegressor(
+    estimators=estimators,
+    final_estimator=RandomForestRegressor(n_estimators=1400,
+                                          min_samples_split=2,
+                                          min_samples_leaf=2,
+                                          max_features='sqrt',
+                                          max_depth=5,
+                                          oob_score=True)
+)
 
-# stack.fit(Xtrainv, ytrainv)
-# stack_train_pred = stack.predict(Xtrainv)
-# stack_val_pred = stack.predict(Xtestv)
-# stack_test_pred = stack.predict(Xtest)
+stack.fit(Xtrainv, ytrainv)
+stack_train_pred = stack.predict(Xtrainv)
+stack_val_pred = stack.predict(Xtestv)
+stack_test_pred = stack.predict(Xtest)
 
-# stack_train_mse = mean_squared_error(ytrainv, stack_train_pred)
-# stack_val_mse = mean_squared_error(ytestv, stack_val_pred)
-# stack_test_mse = mean_squared_error(ytest, stack_test_pred)
+stack_train_mse = mean_squared_error(ytrainv, stack_train_pred)
+stack_val_mse = mean_squared_error(ytestv, stack_val_pred)
+stack_test_mse = mean_squared_error(ytest, stack_test_pred)
 
-# print("RMSE using StackRegressor:\t{}\t{}\t{}\n".format(np.sqrt(stack_train_mse), np.sqrt(stack_val_mse),
-#                                                     np.sqrt(stack_test_mse)))
+print("RMSE using StackRegressor:\t{}\t{}\t{}\n".format(np.sqrt(stack_train_mse), np.sqrt(stack_val_mse),
+                                                    np.sqrt(stack_test_mse)))
 
-# df_rf = pd.DataFrame({'Actual': ytest, 'Predicted': stack_test_pred})
-# fig1 = pp.figure(figsize=(8, 6))
-# df_rf.head(n=300).plot()
-# pp.legend()
-# pp.title("StackRegressor Actual v/s Predicted Annual Rainfall")
-# pp.xticks(())
-# pp.yticks(())
-# pp.show()
+df_rf = pd.DataFrame({'Actual': ytest, 'Predicted': stack_test_pred})
+fig1 = pp.figure(figsize=(8, 6))
+df_rf.head(n=300).plot()
+pp.legend()
+pp.title("StackRegressor Actual v/s Predicted Annual Rainfall")
+pp.xticks(())
+pp.yticks(())
+pp.show()
 
-# print(rfreg.score(Xtest, ytest), elastic.score(Xtest, ytest), stack.score(Xtest, ytest))
+print(rfreg.score(Xtest, ytest), elastic.score(Xtest, ytest), stack.score(Xtest, ytest))
 
 # CLASSIFICATION & CLUSTERING METHODS
 
