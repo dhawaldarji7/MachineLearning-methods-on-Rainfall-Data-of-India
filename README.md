@@ -1,6 +1,7 @@
 # MachineLearning-methods-on-Rainfall-Data-of-India
 An application of machine learning methods like regression and classification project on rainfall dataset of India using different models.
 
+This project was developed as a final project for CS850: Machine Learning course at the University of New Hamshire
 This was a project to learn and apply different aspects of machine learning like regression, classification and clustering.
 
 The dataset used for the project contains data about the rainfall in India of over 100+ years. We preprocessed the data and also generated custom datasets from it for applying different algorithms.
