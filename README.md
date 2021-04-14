@@ -21,7 +21,7 @@ The results and plots for the different alogrithms will be printed on the consol
 
 We used to original dataset after preprocessing to apply regression methods like Ridge, Lasso, ElasticNet, etc.
 
-### Classification
+### Classification & Clustering
 
 We generated a custom dataset and added classes depending on the annual rainfall of a sub-division as SCANTY, LOW, MODERATE, HEAVY rainfall region.
 
